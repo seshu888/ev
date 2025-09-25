@@ -178,20 +178,28 @@
   }
 }
 
-/* Mobile: Show overlay by default */
+/* Mobile: Hide overlay by default, show on tap */
 @media (hover: none) {
   .image-overlay {
-    opacity: 1;
+    opacity: 0 !important; /* Hide by default on mobile */
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(45, 34, 79, 0.2) 40%,
-      rgba(45, 34, 79, 0.6) 70%,
-      rgba(26, 21, 51, 0.85) 100%
+      rgba(45, 34, 79, 0.3) 40%,
+      rgba(45, 34, 79, 0.7) 70%,
+      rgba(26, 21, 51, 0.9) 100%
     );
-    padding: 20px;
+    padding: 15px;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+  }
+  
+  /* Show overlay when card is tapped/touched */
+  .gallery-item:active .image-overlay,
+  .image-container:active .image-overlay {
+    opacity: 1 !important;
   }
 }
 
@@ -210,11 +218,29 @@
   }
 }
 
-/* Mobile: Show content normally */
+/* Mobile: Content animation on tap */
 @media (hover: none) {
   .overlay-content {
-    transform: translateY(0) scale(1);
+    transform: translateY(20px) scale(0.9);
     text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* Animate content when card is tapped */
+  .gallery-item:active .overlay-content,
+  .image-container:active .overlay-content {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Additional mobile fixes to ensure images show properly */
+@media (hover: none) {
+  .gallery img {
+    filter: brightness(1) contrast(1.05); /* Ensure images are visible */
+  }
+  
+  .image-container::before {
+    opacity: 0.3; /* Reduce overlay darkness on mobile */
   }
 }
 
@@ -448,17 +474,6 @@
     gap: 25px;
   }
   
-  .image-overlay {
-    padding: 15px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .overlay-content {
-    padding: 0;
-    text-align: center;
-  }
-  
   .model-title {
     font-size: 18px;
     margin-bottom: 5px;
@@ -502,11 +517,6 @@
   
   .model-title {
     font-size: 20px;
-  }
-  
-  .overlay-content {
-    text-align: center;
-    padding: 25px;
   }
   
   .view-details-btn {

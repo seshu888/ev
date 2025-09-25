@@ -40,8 +40,6 @@
     position: relative;
   }
   
-
-  
   .clients-label {
     color: #2d224f;
     font-size: 14px;
@@ -88,8 +86,6 @@
     animation: slideInFromBottom 0.8s ease-out 0.7s both;
   }
   
-
-  
   .clients-description {
     color: #64748b;
     font-size: 16px;
@@ -120,7 +116,6 @@
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     margin-top: 20px;
-    /* text-transform: uppercase; */
     letter-spacing: 1px;
     box-shadow: 0 10px 30px rgba(45, 34, 79, 0.3);
     position: relative;
@@ -141,14 +136,25 @@
     transition: left 0.6s ease;
   }
   
-  .clients-btn:hover::before {
-    left: 100%;
+  /* Desktop-only hover effects for button */
+  @media (hover: hover) and (pointer: fine) {
+    .clients-btn:hover::before {
+      left: 100%;
+    }
+  
+    .clients-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(45, 34, 79, 0.4);
+      background: linear-gradient(135deg, #1a1533 0%, #2d224f 100%);
+    }
   }
   
-  .clients-btn:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(45, 34, 79, 0.4);
-    background: linear-gradient(135deg, #1a1533 0%, #2d224f 100%);
+  /* Mobile: Active state for button */
+  @media (hover: none) {
+    .clients-btn:active {
+      transform: translateY(-2px) scale(0.98);
+      box-shadow: 0 8px 25px rgba(45, 34, 79, 0.4);
+    }
   }
   
   .clients-right {
@@ -188,15 +194,28 @@
     transition: opacity 0.4s ease;
   }
   
-  .image-container:hover::before {
-    opacity: 1;
-  }
+  /* Desktop-only hover effects for image */
+  @media (hover: hover) and (pointer: fine) {
+    .image-container:hover::before {
+      opacity: 1;
+    }
   
-  .image-container:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 
-      0 35px 80px rgba(45, 34, 79, 0.2),
-      0 15px 40px rgba(45, 34, 79, 0.15);
+    .image-container:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 35px 80px rgba(45, 34, 79, 0.2),
+        0 15px 40px rgba(45, 34, 79, 0.15);
+    }
+  
+    .image-container:hover .clients-img {
+      transform: scale(1.05) rotate(-0.5deg);
+      filter: brightness(1) contrast(1.1) saturate(1.1);
+    }
+  
+    .client-badge:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(45, 34, 79, 0.4);
+    }
   }
   
   .clients-img {
@@ -206,11 +225,6 @@
     display: block;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: brightness(0.95) contrast(1.05);
-  }
-  
-  .image-container:hover .clients-img {
-    transform: scale(1.05) rotate(-0.5deg);
-    filter: brightness(1) contrast(1.1) saturate(1.1);
   }
   
   .client-badge {
@@ -229,11 +243,6 @@
     box-shadow: 0 8px 25px rgba(45, 34, 79, 0.3);
     transition: all 0.3s ease;
     animation: slideInFromBottomLeft 0.8s ease-out 1.5s both;
-  }
-  
-  .client-badge:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(45, 34, 79, 0.4);
   }
   
   .client-logo {
@@ -332,9 +341,11 @@
     }
   }
   
-  /* Add floating animation */
-  .image-container {
-    animation: slideInFromRight 1s ease-out 0.3s both, float 6s ease-in-out 2s infinite;
+  /* Add floating animation - Desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    .image-container {
+      animation: slideInFromRight 1s ease-out 0.3s both, float 6s ease-in-out 2s infinite;
+    }
   }
   
   @keyframes float {
@@ -409,6 +420,13 @@
       padding: 0;
     }
   
+    /* Mobile button styling */
+    .clients-btn {
+      padding: 14px 28px;
+      font-size: 15px;
+      margin-top: 25px;
+    }
+  
     /* Reset animations for mobile */
     .clients-left,
     .clients-right {
@@ -426,13 +444,16 @@
     }
     
     .clients-description {
-      font-size: 16px;
+      font-size: 15px;
+      line-height: 1.6;
     }
     
     .clients-btn {
       width: 100%;
-      padding: 20px;
+      padding: 16px 24px;
+      font-size: 14px;
       justify-content: center;
+      margin-top: 30px;
     }
   
     .clients-img {

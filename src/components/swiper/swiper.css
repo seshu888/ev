@@ -80,17 +80,20 @@
   border-radius: 24px;
 }
 
-.card:hover::before {
-  opacity: 1;
-}
+/* Desktop-only hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover::before {
+    opacity: 1;
+  }
 
-.card:hover {
-  transform: translateY(-12px) rotateX(5deg) rotateY(2deg) scale(1.02);
-  box-shadow: 
-    0 20px 60px rgba(45, 34, 79, 0.2),
-    0 10px 30px rgba(45, 34, 79, 0.15),
-    0 4px 12px rgba(45, 34, 79, 0.1);
-  border-color: rgba(45, 34, 79, 0.2);
+  .card:hover {
+    transform: translateY(-12px) rotateX(5deg) rotateY(2deg) scale(1.02);
+    box-shadow: 
+      0 20px 60px rgba(45, 34, 79, 0.2),
+      0 10px 30px rgba(45, 34, 79, 0.15),
+      0 4px 12px rgba(45, 34, 79, 0.1);
+    border-color: rgba(45, 34, 79, 0.2);
+  }
 }
 
 .card-image {
@@ -118,8 +121,11 @@
   transition: opacity 0.3s ease;
 }
 
-.card:hover .card-image::before {
-  opacity: 0;
+/* Desktop-only hover effects for card image */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-image::before {
+    opacity: 0;
+  }
 }
 
 .card-image img {
@@ -130,9 +136,12 @@
   filter: brightness(0.95) contrast(1.05);
 }
 
-.card:hover .card-image img {
-  transform: scale(1.08) rotate(1deg);
-  filter: brightness(1) contrast(1.1) saturate(1.1);
+/* Desktop-only hover effects for images */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-image img {
+    transform: scale(1.08) rotate(1deg);
+    filter: brightness(1) contrast(1.1) saturate(1.1);
+  }
 }
 
 .card-overlay {
@@ -155,8 +164,27 @@
   backdrop-filter: blur(10px);
 }
 
-.card:hover .card-overlay {
-  opacity: 1;
+/* Desktop-only hover effects for overlay */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-overlay {
+    opacity: 1;
+  }
+}
+
+/* Mobile: Show overlay on touch/tap */
+@media (hover: none) {
+  .card-overlay {
+    opacity: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(45, 34, 79, 0.75) 0%,
+      rgba(26, 21, 51, 0.8) 100%
+    );
+  }
+  
+  .card:active .card-overlay {
+    opacity: 1;
+  }
 }
 
 .visit-btn {
@@ -187,15 +215,32 @@
   transition: left 0.6s ease;
 }
 
-.visit-btn:hover::before {
-  left: 100%;
+/* Desktop-only hover effects for button */
+@media (hover: hover) and (pointer: fine) {
+  .visit-btn:hover::before {
+    left: 100%;
+  }
+
+  .card:hover .visit-btn {
+    transform: translateY(0) scale(1);
+    background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
+    color: white;
+    box-shadow: 0 12px 35px rgba(45, 34, 79, 0.4);
+  }
 }
 
-.card:hover .visit-btn {
-  transform: translateY(0) scale(1);
-  background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
-  color: white;
-  box-shadow: 0 12px 35px rgba(45, 34, 79, 0.4);
+/* Mobile: Active state for button */
+@media (hover: none) {
+  .visit-btn:active {
+    transform: translateY(0) scale(0.95);
+    background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(45, 34, 79, 0.4);
+  }
+  
+  .card:active .visit-btn {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .card-info {
@@ -218,8 +263,11 @@
   transition: transform 0.4s ease;
 }
 
-.card:hover .card-info::before {
-  transform: scaleX(1);
+/* Desktop-only hover effects for card info */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-info::before {
+    transform: scaleX(1);
+  }
 }
 
 .card-title {
@@ -247,8 +295,11 @@
   transition: width 0.4s ease;
 }
 
-.card:hover .card-title::after {
-  width: 100%;
+/* Desktop-only hover effects for title */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-title::after {
+    width: 100%;
+  }
 }
 
 .card-subtitle {
@@ -276,8 +327,11 @@
   transition: transform 0.3s ease;
 }
 
-.card:hover .card-subtitle::before {
-  transform: translateY(-50%) scale(1);
+/* Desktop-only hover effects for subtitle */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-subtitle::before {
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 .card-description {
@@ -303,19 +357,22 @@
   border: 1px solid rgba(45, 34, 79, 0.1);
 }
 
-.card:hover .card-location {
-  background: rgba(45, 34, 79, 0.12);
-  border-color: rgba(45, 34, 79, 0.2);
-  transform: translateX(5px);
+/* Desktop-only hover effects for location */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-location {
+    background: rgba(45, 34, 79, 0.12);
+    border-color: rgba(45, 34, 79, 0.2);
+    transform: translateX(5px);
+  }
+
+  .card:hover .card-location svg {
+    transform: scale(1.1);
+  }
 }
 
 .card-location svg {
   color: #2d224f;
   transition: transform 0.3s ease;
-}
-
-.card:hover .card-location svg {
-  transform: scale(1.1);
 }
 
 /* Enhanced Slick Carousel Customization */
@@ -369,9 +426,12 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-.slick-dots li button:hover {
-  background: rgba(45, 34, 79, 0.4);
-  transform: scale(1.2);
+/* Desktop-only hover effects for dots */
+@media (hover: hover) and (pointer: fine) {
+  .slick-dots li button:hover {
+    background: rgba(45, 34, 79, 0.4);
+    transform: scale(1.2);
+  }
 }
 
 /* Enhanced Custom Arrow Styles */
@@ -387,11 +447,14 @@
   border: 2px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-.slick-prev:hover,
-.slick-next:hover {
-  background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%) !important;
-  transform: scale(1.15) translateY(-2px) !important;
-  box-shadow: 0 15px 40px rgba(45, 34, 79, 0.4) !important;
+/* Desktop-only hover effects for arrows */
+@media (hover: hover) and (pointer: fine) {
+  .slick-prev:hover,
+  .slick-next:hover {
+    background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%) !important;
+    transform: scale(1.15) translateY(-2px) !important;
+    box-shadow: 0 15px 40px rgba(45, 34, 79, 0.4) !important;
+  }
 }
 
 .slick-prev:before,
@@ -468,13 +531,15 @@
   }
 }
 
-/* Add subtle floating animation */
-.card {
-  animation: float 6s ease-in-out infinite;
-}
+/* Add subtle floating animation - Desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .card {
+    animation: float 6s ease-in-out infinite;
+  }
 
-.card:nth-child(2n) {
-  animation-delay: 3s;
+  .card:nth-child(2n) {
+    animation-delay: 3s;
+  }
 }
 
 /* Responsive Design - Enhanced Mobile Support */
@@ -537,7 +602,19 @@
   
   .card {
     margin: 0 auto;
-    max-width: 350px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  /* Force single card display */
+  .slick-track {
+    display: flex !important;
+    width: auto !important;
+  }
+  
+  .slick-slide {
+    width: 100% !important;
+    min-width: 100% !important;
   }
   
   .card-title {
@@ -570,14 +647,6 @@
   .card-location {
     padding: 10px 14px;
     font-size: 13px;
-  }
-  
-  /* Reduce hover effects on mobile */
-  .card:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 
-      0 8px 30px rgba(45, 34, 79, 0.15),
-      0 4px 12px rgba(45, 34, 79, 0.1);
   }
 }
 
