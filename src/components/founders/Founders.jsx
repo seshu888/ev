@@ -16,8 +16,8 @@ const foundersData = [
   },
   {
     id: 2,
-    name: "Rahul Sharma",
-    designation: "Co-Founder & CTO",
+    name: "Kodali Subhash",
+    designation: "Co-Founder",
     location: "Tenali, Andhra Pradesh",
     phone: "+91 98765 43211",
     image: founder1,
