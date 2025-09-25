@@ -65,7 +65,7 @@ function Outlets() {
     arrows: true,
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 1024, // tablet and down
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -73,68 +73,35 @@ function Outlets() {
         },
       },
       {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 768,
+        breakpoint: 768, // mobile
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           arrows: false,
-          centerMode: false,
-          variableWidth: false,
+          dots: true,
+          autoplay: true, // make sure auto slide works
+          autoplaySpeed: 4000, // same as desktop
           swipeToSlide: true,
           touchThreshold: 5,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 480, // small phones
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           arrows: false,
-          centerMode: false,
-          variableWidth: false,
-          swipeToSlide: true,
-          touchThreshold: 5,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: false,
-          variableWidth: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 4000,
           swipeToSlide: true,
           touchThreshold: 3,
-          autoplaySpeed: 5000,
-        },
-      },
-      {
-        breakpoint: 390,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: false,
-          variableWidth: false,
-          swipeToSlide: true,
-          touchThreshold: 3,
-          autoplaySpeed: 5000,
         },
       },
     ],
   };
 
   const handleCardClick = (store) => {
-    // Navigate to store details page
     navigate(`/store/${store.id}`);
   };
 

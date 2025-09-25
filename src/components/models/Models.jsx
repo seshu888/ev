@@ -47,7 +47,8 @@ const Models = () => {
           <div key={model.id} className={`gallery-item item-${index + 1}`}>
             <div className="image-container">
               <img src={model.image} alt={model.title} />
-              <div className="image-overlay">
+              {/* Desktop hover overlay - only shows on desktop */}
+              <div className="image-overlay desktop-overlay">
                 <div className="overlay-content">
                   <span className="category-badge">{model.category}</span>
                   <h3 className="model-title">{model.title}</h3>
@@ -55,6 +56,19 @@ const Models = () => {
                   <button className="view-details-btn">View Details</button>
                 </div>
               </div>
+            </div>
+            {/* Mobile info section - always visible below image on mobile */}
+            <div className="mobile-info">
+              <span className="category-badge mobile-badge">
+                {model.category}
+              </span>
+              <h3 className="model-title mobile-title">{model.title}</h3>
+              <p className="model-description mobile-description">
+                {model.description}
+              </p>
+              <button className="view-details-btn mobile-btn">
+                View Details
+              </button>
             </div>
           </div>
         ))}

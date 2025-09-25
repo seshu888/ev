@@ -149,7 +149,8 @@
   }
 }
 
-.image-overlay {
+/* Desktop Overlay - Only shows on hover on desktop */
+.image-overlay.desktop-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -173,33 +174,12 @@
 
 /* Desktop-only hover effects for overlay */
 @media (hover: hover) and (pointer: fine) {
-  .image-container:hover .image-overlay {
+  .image-container:hover .image-overlay.desktop-overlay {
     opacity: 1;
   }
-}
 
-/* Mobile: Hide overlay by default, show on tap */
-@media (hover: none) {
-  .image-overlay {
-    opacity: 0 !important; /* Hide by default on mobile */
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(45, 34, 79, 0.3) 40%,
-      rgba(45, 34, 79, 0.7) 70%,
-      rgba(26, 21, 51, 0.9) 100%
-    );
-    padding: 15px;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    pointer-events: auto;
-  }
-  
-  /* Show overlay when card is tapped/touched */
-  .gallery-item:active .image-overlay,
-  .image-container:active .image-overlay {
-    opacity: 1 !important;
+  .image-container:hover .overlay-content {
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -209,39 +189,6 @@
   width: 100%;
   transform: translateY(30px) scale(0.95);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Desktop-only hover effects for overlay content */
-@media (hover: hover) and (pointer: fine) {
-  .image-container:hover .overlay-content {
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Mobile: Content animation on tap */
-@media (hover: none) {
-  .overlay-content {
-    transform: translateY(20px) scale(0.9);
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-  
-  /* Animate content when card is tapped */
-  .gallery-item:active .overlay-content,
-  .image-container:active .overlay-content {
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Additional mobile fixes to ensure images show properly */
-@media (hover: none) {
-  .gallery img {
-    filter: brightness(1) contrast(1.05); /* Ensure images are visible */
-  }
-  
-  .image-container::before {
-    opacity: 0.3; /* Reduce overlay darkness on mobile */
-  }
 }
 
 .category-badge {
@@ -321,14 +268,65 @@
   }
 }
 
-/* Mobile: Active state instead of hover */
-@media (hover: none) {
-  .view-details-btn:active {
-    background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
-    color: white;
-    transform: scale(0.95);
-    box-shadow: 0 4px 15px rgba(45, 34, 79, 0.4);
-  }
+/* Mobile info section - hidden on desktop, visible on mobile */
+.mobile-info {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(45, 34, 79, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+}
+
+.mobile-badge {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(45, 34, 79, 0.9));
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #2d224f;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.mobile-description {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 15px 0;
+  line-height: 1.4;
+}
+
+.mobile-btn {
+  background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 15px rgba(45, 34, 79, 0.4);
 }
 
 /* Staggered animation delays */
@@ -368,15 +366,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes expandWidth {
-  from {
-    width: 0;
-  }
-  to {
-    width: 80px;
   }
 }
 
@@ -457,6 +446,19 @@
   .models-title {
     font-size: 44px;
   }
+  
+  /* Show mobile info on tablets and hide desktop overlay */
+  .mobile-info {
+    display: block;
+  }
+  
+  .image-overlay.desktop-overlay {
+    display: none !important;
+  }
+  
+  .image-container {
+    border-radius: 20px 20px 0 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -474,29 +476,29 @@
     gap: 25px;
   }
   
-  .model-title {
-    font-size: 18px;
-    margin-bottom: 5px;
+  /* Mobile info styling */
+  .mobile-info {
+    display: block;
+    padding: 18px;
   }
   
-  .model-description {
+  .mobile-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .mobile-description {
     font-size: 13px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
   
-  .view-details-btn {
-    padding: 10px 20px;
+  .mobile-btn {
+    padding: 9px 18px;
     font-size: 11px;
   }
   
   .image-container {
-    border-radius: 20px;
-  }
-  
-  .category-badge {
-    font-size: 10px;
-    padding: 6px 12px;
-    margin-bottom: 10px;
+    border-radius: 16px 16px 0 0;
   }
 }
 
@@ -512,15 +514,25 @@
   
   .image-container {
     aspect-ratio: 16/10;
-    border-radius: 16px;
+    border-radius: 16px 16px 0 0;
   }
   
-  .model-title {
-    font-size: 20px;
+  .mobile-info {
+    padding: 20px;
   }
   
-  .view-details-btn {
-    padding: 14px 28px;
-    font-size: 13px;
+  .mobile-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .mobile-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .mobile-btn {
+    padding: 12px 24px;
+    font-size: 12px;
   }
 }

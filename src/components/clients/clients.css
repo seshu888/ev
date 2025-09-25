@@ -449,15 +449,15 @@
     }
     
     .clients-btn {
-      width: 100%;
-      padding: 16px 24px;
+        width: fit-content;
+        padding: 8px 12px;
       font-size: 14px;
       justify-content: center;
       margin-top: 30px;
     }
   
     .clients-img {
-      height: 280px;
+      height:140px;
     }
   
     .image-container {
@@ -465,16 +465,16 @@
     }
     
     .client-badge {
-      bottom: 20px;
-      left: 20px;
-      padding: 14px 20px;
+      bottom: 10px;
+      right: 0px;
+      padding: 7px 5px;
     }
     
     .client-logo {
-      font-size: 18px;
+      font-size: 12px;
     }
     
     .partnership-text {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
