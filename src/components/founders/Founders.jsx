@@ -6,7 +6,7 @@ import founder1 from "../../assets/founder.jpg";
 const foundersData = [
   {
     id: 1,
-    name: "Rajesh Kumar",
+    name: "Yele Lakshmi Narasimha",
     designation: "Founder & CEO",
     location: "Ongole, Andhra Pradesh",
     phone: "+91 98765 43210",
