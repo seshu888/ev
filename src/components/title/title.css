@@ -1,0 +1,43 @@
+.title {
+    text-align: center;
+    color: #2d224f;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 70px 0 30px;
+}
+
+/* Dashes ONLY around the p element */
+.title p {
+    position: relative;
+    display: inline-block;
+    padding: 0 40px;
+    margin: 0;
+}
+
+.title p::before,
+.title p::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    background: #2d224f;
+    transform: translateY(-50%);
+}
+
+.title p::before {
+    left: 0;
+}
+
+.title p::after {
+    right: 0;
+}
+
+/* H2 has NO dashes - clean styling */
+.title h2 {
+    font-size: 32px;
+    color: #000F38;
+    margin-top: 5px;
+    text-transform: none;
+}
