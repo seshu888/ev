@@ -731,78 +731,28 @@
     margin-top: 30px;
   }
 }
-@media (max-width: 1024px) {
-  .card-wrapper {
-    padding: 0 12px; /* balanced spacing */
-  }
 
-  .card {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-/* ✅ Mobile (1 card only) */
+/* FORCE MOBILE TO SHOW ONLY 1 CARD - FINAL OVERRIDE */
 @media (max-width: 768px) {
-  /* Hide arrows on mobile (already in your code) */
-  .slick-prev,
-  .slick-next {
+  .slick-slide {
+    width: 100% !important;
+  }
+  
+  .slick-list {
+    width: 100% !important;
+  }
+  
+  .slick-track {
+    width: 100% !important;
+    transform: translateX(0) !important;
+  }
+  
+  .slick-slide:not(.slick-current) {
     display: none !important;
   }
-
-  .slider-container {
-    padding: 60px 10px 80px;
-    min-height: auto;
-  }
-
-  .slick-slider {
-    margin-top: 40px;
-  }
-
-  .card-wrapper {
-    padding: 0 8px;
-    box-sizing: border-box;
-  }
-
-  .card {
-    margin: 0 auto;
-    width: 100%;       /* take full width */
-    max-width: none;   /* don’t shrink */
-  }
-
-  /* Dots centered and touch-friendly */
-  .slick-dots {
-    bottom: -50px !important;
-    gap: 8px;
-  }
-
-  .slick-dots li button {
-    width: 14px;
-    height: 14px;
-  }
-
-  .slick-dots li button::before {
-    font-size: 12px;
-  }
-}
-
-/* ✅ Small phones tweak */
-@media (max-width: 480px) {
-  .card {
-    margin: 0 auto;
-    max-width: 95%; /* slight margin to avoid edge clipping */
-  }
-
-  .slick-dots {
-    bottom: -40px !important;
-  }
-
-  .slick-dots li button {
-    width: 12px;
-    height: 12px;
-  }
-
-  .slick-dots li button::before {
-    font-size: 10px;
+  
+  .slick-slide.slick-current {
+    display: block !important;
+    width: 100% !important;
   }
 }
