@@ -7,7 +7,6 @@
   position: relative;
 }
 
-
 .models-header {
   margin-bottom: 80px;
   position: relative;
@@ -60,8 +59,6 @@
   animation: slideInFromBottom 0.8s ease-out 0.3s both;
 }
 
-
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -79,9 +76,12 @@
   animation: cascadeIn 0.8s ease-out both;
 }
 
-.gallery-item:hover {
-  transform: translateY(-15px) rotateX(5deg) rotateY(2deg) scale(1.02);
-  z-index: 10;
+/* Desktop-only hover effects */
+@media (hover: hover) and (pointer: fine) {
+  .gallery-item:hover {
+    transform: translateY(-15px) rotateX(5deg) rotateY(2deg) scale(1.02);
+    z-index: 10;
+  }
 }
 
 .image-container {
@@ -116,16 +116,19 @@
   transition: opacity 0.3s ease;
 }
 
-.image-container:hover::before {
-  opacity: 0;
-}
+/* Desktop-only hover effects for image container */
+@media (hover: hover) and (pointer: fine) {
+  .image-container:hover::before {
+    opacity: 0;
+  }
 
-.image-container:hover {
-  box-shadow: 
-    0 25px 60px rgba(45, 34, 79, 0.25),
-    0 15px 35px rgba(168, 85, 247, 0.15),
-    0 5px 15px rgba(45, 34, 79, 0.1);
-  border-color: rgba(168, 85, 247, 0.3);
+  .image-container:hover {
+    box-shadow: 
+      0 25px 60px rgba(45, 34, 79, 0.25),
+      0 15px 35px rgba(168, 85, 247, 0.15),
+      0 5px 15px rgba(45, 34, 79, 0.1);
+    border-color: rgba(168, 85, 247, 0.3);
+  }
 }
 
 .gallery img {
@@ -138,9 +141,12 @@
   z-index: 2;
 }
 
-.image-container:hover img {
-  transform: scale(1.08) rotate(1deg);
-  filter: brightness(1) contrast(1.2) saturate(1.1);
+/* Desktop-only hover effects for images */
+@media (hover: hover) and (pointer: fine) {
+  .image-container:hover img {
+    transform: scale(1.08) rotate(1deg);
+    filter: brightness(1) contrast(1.2) saturate(1.1);
+  }
 }
 
 .image-overlay {
@@ -165,8 +171,28 @@
   backdrop-filter: blur(10px);
 }
 
-.image-container:hover .image-overlay {
-  opacity: 1;
+/* Desktop-only hover effects for overlay */
+@media (hover: hover) and (pointer: fine) {
+  .image-container:hover .image-overlay {
+    opacity: 1;
+  }
+}
+
+/* Mobile: Show overlay by default */
+@media (hover: none) {
+  .image-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(45, 34, 79, 0.2) 40%,
+      rgba(45, 34, 79, 0.6) 70%,
+      rgba(26, 21, 51, 0.85) 100%
+    );
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .overlay-content {
@@ -177,8 +203,19 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.image-container:hover .overlay-content {
-  transform: translateY(0) scale(1);
+/* Desktop-only hover effects for overlay content */
+@media (hover: hover) and (pointer: fine) {
+  .image-container:hover .overlay-content {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile: Show content normally */
+@media (hover: none) {
+  .overlay-content {
+    transform: translateY(0) scale(1);
+    text-align: center;
+  }
 }
 
 .category-badge {
@@ -244,15 +281,28 @@
   transition: left 0.6s ease;
 }
 
-.view-details-btn:hover::before {
-  left: 100%;
+/* Desktop-only hover effects for button */
+@media (hover: hover) and (pointer: fine) {
+  .view-details-btn:hover::before {
+    left: 100%;
+  }
+
+  .view-details-btn:hover {
+    background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
+    color: white;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(45, 34, 79, 0.4);
+  }
 }
 
-.view-details-btn:hover {
-  background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
-  color: white;
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(45, 34, 79, 0.4);
+/* Mobile: Active state instead of hover */
+@media (hover: none) {
+  .view-details-btn:active {
+    background: linear-gradient(135deg, #2d224f 0%, #1a1533 100%);
+    color: white;
+    transform: scale(0.95);
+    box-shadow: 0 4px 15px rgba(45, 34, 79, 0.4);
+  }
 }
 
 /* Staggered animation delays */
@@ -346,11 +396,13 @@
   }
 }
 
-/* Add floating animation to gallery items */
-.gallery-item:nth-child(1) { animation: cascadeIn 0.8s ease-out 0.2s both, float 4s ease-in-out 2s infinite; }
-.gallery-item:nth-child(2) { animation: cascadeIn 0.8s ease-out 0.4s both, float 4s ease-in-out 2.5s infinite; }
-.gallery-item:nth-child(3) { animation: cascadeIn 0.8s ease-out 0.6s both, float 4s ease-in-out 3s infinite; }
-.gallery-item:nth-child(4) { animation: cascadeIn 0.8s ease-out 0.8s both, float 4s ease-in-out 3.5s infinite; }
+/* Add floating animation to gallery items - Desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .gallery-item:nth-child(1) { animation: cascadeIn 0.8s ease-out 0.2s both, float 4s ease-in-out 2s infinite; }
+  .gallery-item:nth-child(2) { animation: cascadeIn 0.8s ease-out 0.4s both, float 4s ease-in-out 2.5s infinite; }
+  .gallery-item:nth-child(3) { animation: cascadeIn 0.8s ease-out 0.6s both, float 4s ease-in-out 3s infinite; }
+  .gallery-item:nth-child(4) { animation: cascadeIn 0.8s ease-out 0.8s both, float 4s ease-in-out 3.5s infinite; }
+}
 
 /* Enhanced gradient backgrounds for each item */
 .gallery-item:nth-child(1) .image-container {
@@ -396,20 +448,40 @@
     gap: 25px;
   }
   
+  .image-overlay {
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .overlay-content {
-    padding: 20px;
+    padding: 0;
+    text-align: center;
   }
   
   .model-title {
     font-size: 18px;
+    margin-bottom: 5px;
   }
   
   .model-description {
     font-size: 13px;
+    margin-bottom: 15px;
+  }
+  
+  .view-details-btn {
+    padding: 10px 20px;
+    font-size: 11px;
   }
   
   .image-container {
     border-radius: 20px;
+  }
+  
+  .category-badge {
+    font-size: 10px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
   }
 }
 

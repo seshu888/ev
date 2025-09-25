@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./header.css";
-import logo from "../../assets/logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +17,10 @@ const Header = () => {
 
   return (
     <nav className={`nav-container ${sticky ? "dark-nav" : ""}`}>
-      <img src={logo} alt="logo" className="logo" />
+      <div className="text-logo">
+        <span className="company-name">SHREE LAKSHMI</span>
+        <span className="company-subtitle">INFRA</span>
+      </div>
 
       {/* Desktop Navigation */}
       <ul className={`nav-menu ${menuOpen ? "nav-menu-open" : ""}`}>

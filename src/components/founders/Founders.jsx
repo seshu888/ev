@@ -1,6 +1,7 @@
 import React from "react";
 import "./founder.css";
 import founder from "../../assets/founder2.jpg";
+import founder1 from "../../assets/founder.jpg";
 
 const foundersData = [
   {
@@ -15,11 +16,11 @@ const foundersData = [
   },
   {
     id: 2,
-    name: "Priya Sharma",
+    name: "Rahul Sharma",
     designation: "Co-Founder & CTO",
     location: "Tenali, Andhra Pradesh",
     phone: "+91 98765 43211",
-    image: founder,
+    image: founder1,
     description:
       "Tech innovator specializing in electric vehicle technology. Leading our R&D efforts to bring cutting-edge sustainable transportation solutions to farmers.",
   },

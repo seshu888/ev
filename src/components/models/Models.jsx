@@ -1,5 +1,7 @@
 import React from "react";
 import tractor from "../../assets/tractor.jpeg";
+import auto from "../../assets/auto1.jpeg";
+import tractor2 from "../../assets/tractor2.jpeg";
 import "./model.css";
 
 const Models = () => {
@@ -13,7 +15,7 @@ const Models = () => {
     },
     {
       id: 2,
-      image: tractor,
+      image: auto,
       title: "EV Auto Rickshaw",
       description: "Urban transport solution",
       category: "Autos",
@@ -27,7 +29,7 @@ const Models = () => {
     },
     {
       id: 4,
-      image: tractor,
+      image: tractor2,
       title: "Smart Farm Vehicle",
       description: "Precision agriculture tool",
       category: "Specialty",

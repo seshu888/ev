@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import image2 from "../../assets/ev-store.jpeg";
+import image2 from "../../assets/store4.jpeg";
+import image1 from "../../assets/store2.jpeg";
+import image3 from "../../assets/store3.jpeg";
 import "./store.css";
 
 // Store data with detailed information
@@ -24,11 +26,7 @@ const storeData = {
       "Financing Assistance",
       "Insurance Support",
     ],
-    images: [
-      "/images/ongole-store-1.jpg",
-      "/images/ongole-store-2.jpg",
-      "/images/ongole-store-3.jpg",
-    ],
+    images: [image1, image2, image3],
   },
   markapuram: {
     id: "markapuram",
@@ -49,11 +47,7 @@ const storeData = {
       "Loan Assistance",
       "Extended Warranty",
     ],
-    images: [
-      "/images/markapuram-store-1.jpg",
-      "/images/markapuram-store-2.jpg",
-      "/images/markapuram-store-3.jpg",
-    ],
+    images: [image1, image2, image3],
   },
   tenali: {
     id: "tenali",
@@ -74,11 +68,7 @@ const storeData = {
       "Trade-in Program",
       "Home Delivery",
     ],
-    images: [
-      "/images/tenali-store-1.jpg",
-      "/images/tenali-store-2.jpg",
-      "/images/tenali-store-3.jpg",
-    ],
+    images: [image1, image2, image3],
   },
   cheerala: {
     id: "cheerala",
@@ -99,11 +89,7 @@ const storeData = {
       "Emergency Repairs",
       "Community Programs",
     ],
-    images: [
-      "/images/cheerala-store-1.jpg",
-      "/images/cheerala-store-2.jpg",
-      "/images/cheerala-store-3.jpg",
-    ],
+    images: [image1, image2, image3],
   },
   "narsarao-peta": {
     id: "narsarao-peta",
@@ -124,11 +110,7 @@ const storeData = {
       "Rural Delivery Service",
       "Government Subsidy Assistance",
     ],
-    images: [
-      "/images/narsaraopeta-store-1.jpg",
-      "/images/narsaraopeta-store-2.jpg",
-      "/images/narsaraopeta-store-3.jpg",
-    ],
+    images: [image1, image2, image3],
   },
 };
 
@@ -177,7 +159,7 @@ const StoreDetails = () => {
           {store.images.map((image, index) => (
             <div key={index} className="gallery-image-container">
               <img
-                src={image2}
+                src={image}
                 alt={`${store.title} store view ${index + 1}`}
                 className="gallery-image"
                 onError={(e) => {
