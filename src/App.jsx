@@ -25,13 +25,13 @@ const HomePage = () => {
 };
 
 function App() {
-  const [count, setCount] = useState(0);
+  
 
   return (
     <Router>
       <div>
         <Header />
-        <Routes>
+        <Routes >
           {/* Main home page route */}
           <Route path="/" element={<HomePage />} />
 
